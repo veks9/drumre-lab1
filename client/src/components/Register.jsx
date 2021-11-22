@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import {Button, Form, Col} from 'react-bootstrap';
+import {Button, Form} from 'react-bootstrap';
 import {Link} from "react-router-dom";
 
 export default class Login extends Component {
@@ -10,14 +10,38 @@ export default class Login extends Component {
                     <h3>Register</h3>
 
                     <Form.Group>
-                        <Form.Label> Username </Form.Label>
-                        <Form.Control name="username" type="text" placeholder="Username" required/>
+                        <Form.Label> Name </Form.Label>
+                        <Form.Control name="name" type="text" placeholder="Name" required/>
                     </Form.Group>
+
+                    <br/>
+                    
+                    <Form.Group>
+                        <Form.Label> Surname </Form.Label>
+                        <Form.Control name="surname" type="text" placeholder="Surname" required/>
+                    </Form.Group>
+
+                    <br/>
+
+                    <Form.Group>
+                        <Form.Label> Email </Form.Label>
+                        <Form.Control name="email" type="email" placeholder="Email" required/>
+                    </Form.Group>
+
+                    <br/>
 
                     <Form.Group>
                         <Form.Label> Password </Form.Label>
                             <Form.Control name="password" type="password" placeholder="Password" required/>                       
                     </Form.Group>
+
+                    <br/>
+
+                    <Form.Group>
+                        <Form.Label> Re-enter password </Form.Label>
+                            <Form.Control name="password" type="password" placeholder="Password" required/>                       
+                    </Form.Group>
+
                     <br/>
 
                     <div className="d-grid gap-2">
