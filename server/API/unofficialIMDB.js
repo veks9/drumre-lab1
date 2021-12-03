@@ -37,7 +37,8 @@ async function getMovies(id) {
         const movie = {
             title: response.data.Title,
             year: response.data.Year,
-            poster: response.data.Poster
+            poster: response.data.Poster,
+            plot: response.data.Plot
         }
         Movie.create(movie, function(err) {
             if(err) {

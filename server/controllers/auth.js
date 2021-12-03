@@ -2,9 +2,12 @@ import User from '../models/user.js'
 
 export const login = async (req, res) => {
     try {
-        console.log(req.body.email)
         const user = await User.findOne({ email: req.body.email });
-        console.log(user);
+        if(user.password === req.body.password) {
+            res.status(200).send(user);
+        } else {
+            res.status(401).send('Error: user not found!');
+        }
     } catch (error) {
         console.log(error)
     }

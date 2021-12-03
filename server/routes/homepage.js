@@ -1,10 +1,8 @@
 import express, { Router } from 'express';
+import { getMovies } from '../controllers/homepage.js';
 
 const router = express.Router()
 
-router.get('/', (req, res) => {
-    console.log('homerute')
-    res.send('THIS WORKS')
-});
+router.get('/getMovies', getMovies);
 
-export default router
+export default router;

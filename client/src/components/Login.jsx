@@ -42,6 +42,7 @@ export default class Login extends Component {
             .then(response => {
                 if (response.status === 200) {
                     response.json().then(body => {
+                        console.log(body);
                         self.props.authenticate(body);
                         self.setState({redirect: true})
                     });
