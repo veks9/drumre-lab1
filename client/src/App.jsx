@@ -5,6 +5,7 @@ import { Route, Routes } from "react-router-dom";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import Header from './components/Header';
+import Homepage from './pages/Homepage';
 
 class App extends Component {
     constructor(props) {
@@ -16,7 +17,6 @@ class App extends Component {
     }
 
     authenticate = (cb) => {
-        console.log(cb)
         cookie.save('isAuth', true, {path: '/', maxAge: 5 * 60 * 60});
         cookie.save('user', cb, {path: '/', maxAge: 5 * 60 * 60});
         this.setState({authenticated: true});
@@ -41,6 +41,7 @@ class App extends Component {
                                                                     authenticated={this.state.authenticated} />}/>
                         <Route path='/register' exact element={<Register authenticate={this.authenticate}
                                                                         authenticated={this.state.authenticated} />}/>
+                        <Route path='/' exact element={<Homepage/>}/>                                            
                     </Routes>
                 </div>
             </div>

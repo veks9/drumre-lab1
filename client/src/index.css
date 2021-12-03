@@ -72,3 +72,10 @@ body, html, .App, #root, .outer {
 .errorMessage {
   color: red;
 }
+
+.facebookButton {
+  text-align: center;
+  display: block;
+  width: 100%;
+  margin: 0%;
+}

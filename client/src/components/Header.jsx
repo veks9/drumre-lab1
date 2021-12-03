@@ -18,10 +18,9 @@ export default class Header extends Component {
                                 ?
                                 <Nav>
                                     {this.props.user ?
-                                        <Nav.Link href="/">
-                                            
+                                        <Nav.Link href="/">  
                                             <img src={this.props.user.picture} alt=""/>
-                                            {this.props.user.name}
+                                            {' ' + this.props.user.name + ' ' + this.props.user.surname} 
                                         </Nav.Link>
                                         :
                                         <div></div>

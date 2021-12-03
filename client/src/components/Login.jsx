@@ -14,6 +14,11 @@ export default class Login extends Component {
         };
     }
 
+    onChange = (event) => {
+        const {name, value} = event.target;
+        this.setState(state => ({...state, [name]: value}))
+    };
+
     onSubmit = (e) => {
         let self = this;
 
@@ -64,31 +69,31 @@ export default class Login extends Component {
                 <Form onSubmit={this.onSubmit}>
                     <h3>Login</h3>
 
-                    <Facebook authenticate={this.props.authenticate} authenticated={this.props.authenticated}/>
-                    
-                    <hr />
-
                     <Form.Group>
                         <Form.Label> Email </Form.Label>
-                        <Form.Control name="email" type="email" placeholder="Email" required/>
+                        <Form.Control name="email" type="email" placeholder="Email" onChange={this.onChange} required/>
                     </Form.Group>
                     <br/>
                     <Form.Group>
                         <Form.Label> Password </Form.Label>
-                            <Form.Control name="password" type="password" placeholder="Password" required/>                       
+                            <Form.Control name="password" type="password" placeholder="Password" onChange={this.onChange} required/>                       
                     </Form.Group>
                     <p className="errorMessage">
                         {this.state.error}
                     </p>
                     <br/>
                     <div className="d-grid gap-2">
-                        <Button type="submit" variant="dark" size="lg" > Login </Button>
+                        <Button type="submit" variant="dark" size="lg" disabled={!this.isValid()} > Login </Button>
                     </div>
                     <br/>
                     <p className="not-registered text-right">
                         <Link to="/register">Register here</Link>
                     </p>
                 </Form>
+                <hr />
+                <div className="facebookButton">
+                    <Facebook authenticate={this.props.authenticate} authenticated={this.props.authenticated}/>
+                </div>
             </div>
         )
     }

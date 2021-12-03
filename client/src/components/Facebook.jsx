@@ -31,7 +31,6 @@ export default class Facebook extends Component {
 
         fetch(`${process.env.REACT_APP_BACKEND_URL}/auth/fbLogin`, options)
             .then(response => {
-                console.log(response.status)
                 if (response.status === 200) {
                     response.json().then(body => {
                         self.props.authenticate(body);
@@ -52,25 +51,12 @@ export default class Facebook extends Component {
     render() {
         let fbContent;
 
-        if (this.props.authenticated) {
-            // fbContent = (
-            //     <div style={{
-            //         width: '400px',
-            //         margin: 'auto',
-            //         padding: '20px'
-            //     }}>
-            //         <img src={this.state.picture} alt={this.state.name}/>
-            //         <h2>Welcome {this.state.name}</h2>
-            //         Email: {this.state.email}
-            //     </div>
-            // )
-            console.log("we made it")
-        } else {
+        if (!this.props.authenticated) {
             fbContent = (<FacebookLogin
                 appId={"1149148642281663"}
                 autoLoad={true}
                 fields="name, email, picture"
-                callback={this.responseFacebook} />);
+                callback={this.responseFacebook}/>);
         }
 
         return (

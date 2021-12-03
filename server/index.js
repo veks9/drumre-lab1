@@ -5,13 +5,10 @@ import cors from 'cors';
 import dotenv from 'dotenv'
 dotenv.config()
 
-
 import homepageRoutes from './routes/homepage.js';
 import authRoutes from './routes/auth.js'
 
-
 const app = express()
-
 
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
@@ -24,7 +21,7 @@ app.use(cors({
 }));
 
 app.use('/auth', authRoutes);
-app.use('/home', homepageRoutes);
+app.use('/', homepageRoutes);
 
 const PORT = process.env.PORT || 5000;
 
