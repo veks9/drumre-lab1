@@ -28,8 +28,11 @@ export default class Homepage extends Component {
     }
     render() {
         return (
-            <div class="movies-container">
-                <MoviesList movies={this.state.movies}/>
+            <div>
+                <div class="spacer"></div>
+                <div class="movies-container">
+                    <MoviesList movies={this.state.movies}/>
+                </div>
             </div>
         )
     }

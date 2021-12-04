@@ -35,7 +35,7 @@ class App extends Component {
         return (
             <div className="App">
                 <Header authenticated={this.state.authenticated} logout={this.logout} user={this.state.user}/>
-                <div className="outer"> 
+                <div className="outer">
                     <Routes>
                         <Route path='/login' exact element={<Login authenticate={this.authenticate}
                                                                     authenticated={this.state.authenticated} />}/>
