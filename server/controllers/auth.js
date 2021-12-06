@@ -15,8 +15,6 @@ export const login = async (req, res) => {
 
 export const register = async (req, res) => {
     try {
-        console.log(req.body)
-
         const user = { 
             name: req.body.name,
             surname: req.body.surname,
@@ -24,14 +22,20 @@ export const register = async (req, res) => {
             password: req.body.password
         }
 
-        await User.create(user, function(err) {
-            if(err) {
-                console.log(err);
-                res.status(500).send();
-            }
-        });
+        const existingUser = await User.findOne({ email: user.email });
+        if(!existingUser) {
+            await User.create(user, function(err) {
+                if(err) {
+                    console.log(err);
+                    res.status(500).send();
+                }
+            });
+    
+            res.status(200).send(user);
+        } else {
+            res.status(400).send("User already exists!");
+        }
 
-        res.status(200).send(user);
     } catch (error) {
         console.log(error)
     }
@@ -50,14 +54,15 @@ export const fbLogin = async (req, res) => {
             picture: req.body.picture,
             userId: req.body.userID
         }
-
-        await User.create(user, function(err) {
-            if(err) {
-                console.log(err);
-                res.status(500).send();
-            }
-        });
-
+        const existingUser = await User.findOne({ email: user.email });
+        if(!existingUser) {
+            await User.create(user, function(err) {
+                if(err) {
+                    console.log(err);
+                    res.status(500).send();
+                }
+            });
+        }
         res.status(200).send(user);
     } catch (error) {
         console.log(error)
